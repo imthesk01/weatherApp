@@ -1,5 +1,7 @@
 # MyWeatherApp
 
+Open this webApp @ https://imthesk01.github.io/weatherApp/
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.3.
 
 ## Development server
