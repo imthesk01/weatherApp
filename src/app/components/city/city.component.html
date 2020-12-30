@@ -1,0 +1,41 @@
+
+<app-search
+(selectedCity)="getCityDetails($event)">
+</app-search>
+
+<!-- 
+  CHALLENGE
+    - display cityName in format "city name, country name"
+    - define for loop to loop through weather of different days
+    - display the weather for total 4 days (including today) 
+      var 'i' in class="cityData" can be used to store index of the cityDetails.weather array
+    - date should be formatted (eg: 2018-08-03 should be displayed as 'Aug 3, 2018' )
+    - temperature should have 
+      - minimum 2 digits to the left of decimal
+      - exactly 1 digit to the right of decimal
+  -->
+  
+<div class="container" *ngIf="cityDetails">
+  <p class="cityName">{{ city }}, {{ country }}</p>
+  <div fxLayout="row" fxLayoutAlign="center none" fxLayoutGap="15px">
+  <div class="container-weather" fxLayout="row">
+
+    <span *ngFor="let cityDetail of cityDetails; let i=index" >
+      <mat-card class="cityData" *ngIf="i<4">
+      <h3 class="date">{{cityDetail.applicable_date | date: 'mediumDate'}}</h3>
+      <mat-card>
+        <img src="https://www.metaweather.com/static/img/weather/{{cityDetail.weather_state_abbr}}.svg" class="weatherIcon">
+        <span class="weather"> {{cityDetail.weather_state_name}} </span>
+        <br>
+        <span class="cityTemp">{{cityDetail.the_temp | number: '2.1-1'}} </span>
+      </mat-card>  
+    </mat-card>
+  </span>
+
+  </div>
+  </div>
+</div>
+
+<div class="userInfo" *ngIf='!cityDetails' >
+  <h1>Enter the city name to get the weather report.</h1>
+</div>
